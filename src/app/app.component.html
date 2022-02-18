@@ -1,0 +1,95 @@
+
+<!-- <app-header></app-header>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+<app-footer></app-footer> -->
+
+
+
+<!-- use for drag and drop -->
+<!-- Example one -->
+
+<div id="bounding-box">
+    <div cdkDrag
+         cdkDragLockAxis="y"
+         cdkDragBoundary="#bounding-box" 
+         class="drag-box">
+        Drag 
+        <div class="handle" cdkDragHandle>
+           click
+        </div>
+    </div>
+</div>
+<br><br>
+<hr>
+
+<!-- Example Two -->
+<!-- <h1>Animals 1</h1>
+<div cdkDropList
+     (cdkDropListDropped)="onDrop($event)"
+     [cdkDropListData]="Animals">
+
+    <div
+     cdkDrag
+     class="drag-item"
+     *ngFor="let animal of Animals">
+         {{animal}}
+     <img *cdkDragPreview src="assets/img.jpg" height="80px">
+    </div>
+</div>
+
+<h1>Animals 2</h1>
+<div cdkDropList
+     (cdkDropListDropped)="onDrop($event)"
+     [cdkDropListData]="Animals2">
+
+    <div
+     cdkDrag
+     class="drag-item"
+     *ngFor="let animal of Animals2">
+         {{animal}}
+     <img *cdkDragPreview src="assets/img.jpg" height="80px">
+    </div>
+</div> -->
+
+<div cdkDropListGroup>
+    <h1>Animals 1</h1>
+    <div cdkDropList
+         id="Animals"
+         [cdkDropListConnectedTo]="Animals2"
+         (cdkDropListDropped)="onDrop($event)"
+         [cdkDropListData]="Animals">
+    
+        <div
+         cdkDrag
+         class="drag-item"
+         *ngFor="let animal of Animals">
+             {{animal}}
+         <img *cdkDragPreview src="assets/img.jpg" height="80px">
+        </div>
+    </div>
+    
+
+    <h1>Animals 2</h1>
+    <div cdkDropList
+         id="Animals2"
+         [cdkDropListConnectedTo]="Animals"
+         (cdkDropListDropped)="onDrop($event)"
+         [cdkDropListData]="Animals2">
+    
+        <div
+         cdkDrag
+         class="drag-item"
+         *ngFor="let animal of Animals2">
+             {{animal}}
+         <img *cdkDragPreview src="assets/img.jpg" height="80px">
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
